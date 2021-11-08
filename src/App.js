@@ -1,13 +1,14 @@
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Cards from './pages/cards';
+import Home from './pages/home';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' component={ Cards } />
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );
