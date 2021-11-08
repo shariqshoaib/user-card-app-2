@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './Card.css';
 
@@ -84,7 +82,7 @@ const Card = ({ user }) => {
         <div className="actions">
           <Modal
             className="actions-modal"
-            shouldCloseOnOverlayClick={true}
+            shouldCloseOnOverlayClick
             isOpen={isModalOpen}
             onRequestClose={toggleModal}
           >
@@ -161,3 +159,23 @@ const Card = ({ user }) => {
 };
 
 export default Card;
+
+Card.defaultProps = {
+  user: PropTypes.shape({
+    name: null,
+    link: null,
+    email: null,
+    phone: null,
+    website: null,
+  }),
+};
+
+Card.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    link: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
+    website: PropTypes.string,
+  }),
+};

@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import imagesActionTypes from './actionTypes';
 import getUsers from '../../utils/usersApi';
 
@@ -25,7 +24,7 @@ export const fetchImages = async (dispatch) => {
   try {
     const users = await getUsers();
     const images = {};
-    for (let i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i += 1) {
       const { username } = users[i];
       const link = `https://avatars.dicebear.com/v2/avataaars/${username}.svg?options[mood][]=happy`;
       images[username] = link;

@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 
 ReactDOM.render(
-  // eslint-disable-next-line react/jsx-filename-extension
   <React.StrictMode>
     <Provider store={store}>
       <App />

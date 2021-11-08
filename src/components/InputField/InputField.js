@@ -1,15 +1,25 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const InputField = ({ label, value, onChange }) => (
   <div className="field">
-    <label>
+    <label htmlFor={label}>
       {`${label}: `}
-      <input type="text" value={value} onChange={onChange} />
+      <input id={label} type="text" value={value} onChange={onChange} />
     </label>
   </div>
 );
+
+InputField.defaultProps = {
+  label: null,
+  value: null,
+  onChange: null,
+};
+
+InputField.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
 
 export default InputField;
