@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
 import { selectUser, selectIsLoading as selectUsersLoading } from '../../redux/users/selectors';
 import { selectImages, selectIsLoading as selectImagesLoading } from '../../redux/images/selectors';
@@ -23,15 +24,26 @@ const Home = () => {
 
   if (usersLoading || imagesLoading) return <Spinner />;
   return (
-    <div className="container">
+    <Container>
       { users.map((user) => {
         const link = images[user.username];
         return (
           <Card key={user.id} user={{ ...user, link }} />
         );
       })}
-    </div>
+    </Container>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  background-color: ${({ theme }) => theme.body};
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+  word-spacing: 2px;
+  min-height: 100vh;
+`;
