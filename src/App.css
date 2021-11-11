@@ -4,45 +4,6 @@
   padding:0px;
 }
 
-body {
-  font-size: 14px;
-  line-height: 1.5;
-  word-spacing: 2px;
-}
-
-p {
-  margin-left: 10px;
-  margin-bottom: 5px;
-}
-
-button {
-  background: none;
-  border: none;
-  font-size: 20px;
-}
-
-input {
-  border: 1px solid #d9d9d9;
-  cursor: text;
-  min-height: 32px;
-  min-width: 60%;
-  padding: 11px 4px;
-}
-
-.container {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-  .column {
-    width:33%;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  .column {
-    width:100%;
-  }
+div{
+  transition: all 0.1s ease-in-out;
 }

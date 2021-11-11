@@ -5,8 +5,16 @@ import './Card.css';
 
 import Modal from 'react-modal';
 import {
-  Delete, Edit, Heart, HeartActive, Mail, Phone, Web, Cancel,
+  DeleteIcon, EditIcon, HeartIcon, HeartActiveIcon,
+  MailIcon, PhoneIcon, WebIcon, CancelIcon,
 } from '../../utils/icons';
+
+import {
+  Column, StyledCard, CardCover, CardBody, Username,
+  Info, UserInfoWrapper, CardFooter, ModalBody, ModalTitle, ModalFooter,
+  ActionButtonsWrapper, ModalHeader, ActionButton, SaveButton, CancelButton,
+  StyledModal, EditActionButton,
+} from './card.styled';
 
 import InputField from '../InputField';
 
@@ -51,50 +59,51 @@ const Card = ({ user }) => {
 
   Modal.setAppElement('#root');
   return (
-    <div className="column">
-      <div className="card">
+    <Column>
+      <StyledCard>
 
-        <div className="card-cover">
-          <img
-            src={link}
-            alt="cover"
-            width="200px"
-            height="200px"
-          />
-        </div>
+        <CardCover
+          src={link}
+          alt="cover"
+          width="200px"
+          height="200px"
+        />
 
-        <div className="card-body">
-          <h3>{ currentUser.name }</h3>
-          <div className="user-info">
-            <Mail />
-            <p>{ currentUser.email }</p>
-          </div>
-          <div className="user-info">
-            <Phone />
-            <p>{ currentUser.phone }</p>
-          </div>
-          <div className="user-info">
-            <Web />
-            <p>{ `http://${user.website} ` }</p>
-          </div>
-        </div>
+        <CardBody>
+          <Username>{ currentUser.name }</Username>
 
-        <div className="actions">
-          <Modal
+          <UserInfoWrapper>
+            <MailIcon />
+            <Info>{ currentUser.email }</Info>
+          </UserInfoWrapper>
+
+          <UserInfoWrapper>
+            <PhoneIcon />
+            <Info>{ currentUser.phone }</Info>
+          </UserInfoWrapper>
+
+          <UserInfoWrapper>
+            <WebIcon />
+            <Info>{ `http://${user.website} ` }</Info>
+          </UserInfoWrapper>
+        </CardBody>
+
+        <CardFooter>
+          <StyledModal
             className="actions-modal"
             shouldCloseOnOverlayClick
             isOpen={isModalOpen}
             onRequestClose={toggleModal}
           >
-            <div className="modal-header">
-              <h4>Basic Modal</h4>
+            <ModalHeader>
+              <ModalTitle>Basic Modal</ModalTitle>
               <Button
-                Icon={Cancel}
+                Icon={CancelIcon}
                 handleClick={toggleModal}
                 style={{ cursor: 'pointer' }}
               />
-            </div>
-            <div className="modal-body">
+            </ModalHeader>
+            <ModalBody>
               <InputField
                 label="Name"
                 value={name}
@@ -115,46 +124,39 @@ const Card = ({ user }) => {
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
               />
-            </div>
-            <div className="modal-footer">
-              <Button
-                id="modal-cancel"
+            </ModalBody>
+
+            <ModalFooter>
+              <CancelButton
                 handleClick={toggleModal}
                 text="Cancel"
               />
-              <Button
-                id="modal-save"
+              <SaveButton
                 handleClick={updateUser}
                 text="Save"
               />
-            </div>
-          </Modal>
+            </ModalFooter>
+          </StyledModal>
 
-          <ul className="actions-buttons">
-            <li>
-              <Button
-                Icon={isHeartActive ? HeartActive : Heart}
-                handleClick={toggleHeart}
-              />
-            </li>
-            <li>
-              <Button
-                Icon={Edit}
-                handleClick={toggleModal}
-              />
-            </li>
-            <li>
-              <Button
-                id="delete-icon"
-                Icon={Delete}
-                handleClick={deleteUser}
-              />
-            </li>
-          </ul>
-        </div>
+          <ActionButtonsWrapper>
+            <ActionButton
+              Icon={isHeartActive ? HeartActiveIcon : HeartIcon}
+              handleClick={toggleHeart}
+            />
+            <EditActionButton
+              Icon={EditIcon}
+              handleClick={toggleModal}
+            />
+            <ActionButton
+              id="delete-icon"
+              Icon={DeleteIcon}
+              handleClick={deleteUser}
+            />
+          </ActionButtonsWrapper>
+        </CardFooter>
 
-      </div>
-    </div>
+      </StyledCard>
+    </Column>
   );
 };
 
